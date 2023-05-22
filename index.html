@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <title>cleangoogle.lol | A minimalist Google.</title>
+</head>
+<body>
+    <div class="search">
+        <img src="/assets/img/logo.svg" id="logo">
+        <div class="widgets">
+            <div id="timeWidget">
+              <p id="time"></p>
+            </div>
+            <div id="quoteWidget">
+                <p id="quote"></p>
+            </div>
+            <div id="weatherWidget">
+                <div id="weatherData">
+                  <p id="location"></p>
+                  <p style="padding-left: 5px;">-</p>
+                  <img src="" id="icon">
+                  <p id="temperature"></p>
+                </div>
+            </div>
+        </div> 
+        <input type="text" id="query" placeholder="search with google...">
+        <button id="searchButton">search</button>
+    </div>
+    <div id="footer">
+        <button id="settingsButton" onclick="openSettings()">settings</button>
+        <div class="overlay"></div>
+        <div class="settingsWindow">
+          <h1><span class="settingsEmoji">⚙️</span>settings</h1>
+          <a target="_blank" id="me" href="https://github.com/matyii">made with &lt;3 by matyii</a>
+          <hr>
+          <div class="tabContainer">
+            <div id="themeTabButton" class="tabButton active" onclick="openTab('themeTab')">
+              <span class="tabTextEmoji">
+                <span class="tabEmoji">🖌️</span>
+                <span class="tabText">theme</span>
+            </span>
+            </div>
+            <div id="widgetsTabButton" class="tabButton" onclick="openTab('widgetsTab')">
+              <span class="tabTextEmoji">
+                <span class="tabEmoji">🔧</span>
+                <span class="tabText">widgets</span>
+            </span>
+            </div>
+            <div id="apiTabButton" class="tabButton" onclick="openTab('apiTab')" id="apiTabButton">
+              <span class="tabTextEmoji">
+                <span class="tabEmoji">☁️</span>
+                <span class="tabText">weather</span>
+              </span>
+            </div>
+          </div>
+          <div id="themeTab" class="tabContent">
+              <h1><span class="settingsEmoji">🖌️</span>theme</h1>
+              <div id="themeButtons">
+                  <p>current theme:</p>
+                  <button id="whiteModeButton" class="themeButton" onclick="toggleTheme('whiteMode')">light ☀️</button>
+                  <button id="darkModeButton" class="themeButton" onclick="toggleTheme('darkMode')">dark 🌙</button>
+              </div>
+          </div>
+          <div id="widgetsTab" class="tabContent" style="display: none;">
+              <h1><span class="settingsEmoji">🔧</span>widgets</h1>
+              <div id="toggleBar">
+                  <p>time widget:</p>
+                  <label class="toggleSwitch">
+                      <input type="checkbox" id="timeToggle" onchange="toggleTimeWidget()">
+                      <span class="slider"></span>
+                  </label>
+              </div>
+              <div id="toggleBar">
+                  <p>quote widget:</p>
+                  <label class="toggleSwitch">
+                      <input type="checkbox" id="quoteToggle" onchange="toggleQuoteWidget()">
+                      <span class="slider"></span>
+                  </label>
+              </div>
+              <div id="toggleBar">
+                  <p>weather widget:</p>
+                  <label class="toggleSwitch">
+                      <input type="checkbox" id="weatherToggle" onchange="toggleWeatherWidget()">
+                      <span class="slider"></span>
+                  </label>
+              </div>
+          </div>
+          <div id="apiTab" class="tabContent" style="display: none;">
+              <h1><span class="settingsEmoji">🔑</span>API Key & City</h1>
+              <label id="apikey">
+                  <label for="apiKey">api key: </label>
+                  <div class="input-button-container">
+                      <input type="text" name="" id="apiKey">
+                      <a href="https://openweathermap.org/api" target="_blank" id="button">get key</a>
+                      <button id="button" onclick="saveApiKey()">save</button>
+                  </div>
+              </label>
+              <label id="city">
+                  <label for="cityLabel">city: </label>
+                  <div class="input-container">
+                      <input type="text" name="" id="cityName">
+                      <div class="buttons-container">
+                          <button id="button" onclick="detectByIP()">detect</button>
+                          <button id="button" onclick="saveCityName()">save</button>
+                      </div>
+                  </div>
+              </label>
+          </div>
+          <button id="button" onclick="closeSettings()">Close</button>
+      </div>
+    </div>
+</body>
+<script src="/assets/js/search.js"></script>
+<script src="/assets/js/theme.js"></script>
+<script src="/assets/js/settings.js"></script>
+<script src="/assets/js/widgets/quotes.js"></script>
+<script src="/assets/js/widgets/weather.js"></script>
+<script src="/assets/js/widgets/time.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+</html>

@@ -1,0 +1,414 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    user-select: none;
+}
+body {
+    background-color: black;
+    color: rgb(100, 100, 100);
+    transition: 0.3s;
+}
+.whiteMode {
+    background-color: #f2f2f2;
+    color: rgb(100, 100, 100);
+    transition: 0.3s;
+}
+.whiteMode #logo {
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+    transition: 0.3s;
+}
+.search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#logo {
+    width: 250px;
+    padding: 20px;
+    transition: 0.2s ease-in-out;
+}
+#logo:hover {
+    transform: scale(1.05);
+}
+#query {
+    border: none;
+    background: none;
+    border-bottom: 2px solid rgb(100, 100, 100);
+    padding: 10px;
+    outline: none;
+    width: 60%;
+    margin-top: 20px;
+    transition: 0.2s ease-in-out;
+    font-family: monospace;
+    color: white;
+}
+#query:focus {
+    border-bottom: 2px solid rgb(179, 179, 179);
+}
+.whiteMode #query {
+    color: black;
+}
+.whiteMode #query:focus {
+    border-bottom: 2px solid rgb(32, 32, 32);
+    color: black;
+}
+#button, #searchButton {
+    border: none;
+    padding: 10px;
+    background: none;
+    color:rgb(128, 128, 128);
+    font-family: monospace;
+    transition: 0.3s ease-in-out;
+    margin-top: 20px;
+}
+#button:hover, #searchButton:hover {
+    color:rgb(41, 41, 41);
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.whiteMode #button:hover {
+    color:rgb(255, 255, 255);
+    background-color: rgb(39, 39, 39);
+    cursor: pointer;
+}
+#footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+#themeButton {
+    font-family: monospace;
+    border: none;
+    background: none;
+    margin: 5px;
+    color: rgb(41, 41, 41);
+    transition: 0.3s ease-in-out;
+}
+#themeButton:hover {
+    color: rgb(73, 73, 73);
+}
+#me {
+    font-family: monospace;
+    color: rgb(58, 58, 58);
+    transition: 0.3s ease-in-out;
+    margin-top: 5px;
+}
+#me:hover {
+    color: rgb(95, 95, 95);
+}
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#settingsButton {
+    font-family: monospace;
+    border: none;
+    background: none;
+    margin: 5px;
+    color: rgb(41, 41, 41);
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+#settingsButton:hover {
+    color: rgb(73, 73, 73);
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+.settingsWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    border: 2px solid white;
+    color: rgb(179, 179, 179);
+    font-family: monospace;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+.whiteMode .settingsWindow {
+    border: 2px solid black;
+}
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.settingsWindow.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.settingsWindow h1 {
+    margin-bottom: 10px;
+}
+.whiteMode .settingsWindow.active {
+    background-color: white;
+    color: black;
+}
+#themeButtons {
+    display: flex;
+    align-items: center;
+}
+#themeButtons p {
+    margin-right: 10px;
+}
+#themeButtons button {
+    border: none;
+    padding: 10px;
+    background: none;
+    font-family: monospace;
+    border: 2px solid white;
+    color: rgb(179, 179, 179);
+    transition: 0.3s ease-in-out;
+    width: 100px;
+}
+
+.whiteMode #themeButtons button {
+    border: 2px solid black;
+    color: black;
+}
+#themeButtons button:hover {
+    color: rgb(73, 73, 73);
+}
+#themeButtons button.active {
+    color: rgb(73, 73, 73);
+    font-weight: bold;
+    background-color: white;
+}
+.whiteMode #themeButtons button.active {
+    background-color: black;
+    color: rgb(128, 128, 128);
+}
+#toggleBar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#toggleBar p {
+    margin-right: 10px;
+}
+.toggleSwitch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+.toggleSwitch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ff3939;
+    transition: 0.3s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+}
+input:checked + .slider {
+    background-color: #21f367;
+}
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+#quoteWidget {
+    display: none;
+    padding: 10px;
+    font-family: monospace;
+}
+.widgets {
+    display: flex;
+}
+#quoteWidget, #weatherWidget {
+    flex: 0 0 auto;
+    padding: 5px;
+}
+#break {
+    padding-top: 3px;
+    font-weight: bolder;
+}
+#weatherData {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: monospace;
+}
+#apiKey, #cityName {
+    background: none;
+    border: none;
+    color: rgb(128, 128, 128);
+    outline: none;
+    padding: 5px;
+    font-family: monospace;
+    border-bottom: 2px solid white;
+    transition: 0.3s ease-in-out;
+}
+#apikey, #city {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+.input-button-container input[type="text"], #button {
+    border: none;
+    padding: 10px;
+    background: none;
+    color: rgb(128, 128, 128);
+    font-family: monospace;
+    transition: 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+@media (max-width: 480px) {
+    .input-button-container {
+        flex-direction: column;
+        align-items: flex-start;
+   }
+    .input-button-container input[type="text"], #button {
+        margin-left: 0;
+        margin-top: 10px;
+   }
+}
+#apiKey {
+    filter: blur(2px);
+    transition: 0.3s ease-in-out;
+}
+#apiKey:focus, #apiKey:hover {
+    filter: blur(0px);
+}
+.whiteMode #apiKey, .whiteMode #cityName {
+    border-bottom: 2px solid rgb(39, 39, 39);
+}
+#icon {
+    width: 18px;
+}
+.input-container {
+    display: flex;
+    align-items: baseline;
+}
+
+.buttons-container {
+    display: flex;
+    margin-left: 10px;
+}
+
+.settingsEmoji {
+    padding-right: 5px;
+}
+
+#time {
+    padding: 5px;
+    font-family: monospace;
+}
+
+.tabContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.tabButton {
+    flex: 1;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    background: none;
+    color: rgb(179, 179, 179);
+    border: 2px solid white;
+    transition: 0.3s ease-in-out;
+    width: 80px;
+}
+
+.whiteMode .tabButton {
+    border: 2px solid black;
+    color: black;
+}
+
+.tabButton:hover {
+    background-color: white;
+    color: black;
+}
+
+.tabTextEmoji {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tabEmoji {
+    font-size: 24px;
+}
+
+.tabText {
+    margin-top: 5px;
+}
+
+.tabButton.active {
+    background-color: white;
+    color: black;
+}
+
+.tabButton.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.tabContent {
+    display: none;
+    animation: fade 0.5s ease-in-out;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.configMenu {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .configButton {
+    padding: 5px;
+    cursor: pointer;
+  }
+  
