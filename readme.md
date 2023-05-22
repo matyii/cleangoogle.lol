@@ -20,7 +20,7 @@ A minimalist version of Google.
 - In the settings menu after enabling the weather widget, you just paste the API key there and save!
 
 **Information**
-The API key is not stored server-side! Every information is store locally in your browser!
+The API key is not stored server-side! Every information is stored locally in your browser!
 
 For any questions, feel free to contact me!
 Happy googling!
